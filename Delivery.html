@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="css/Delivery.css" rel="stylesheet">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Ubuntu+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#des-form').submit(function () {
+                return false;
+            })
+
+            var currentLocation;
+            $.post('https://sendpieapi.sayan.org.in/getuser', {
+                username: localStorage.getItem('username'),
+                password: localStorage.getItem('password'),
+                target: localStorage.getItem('username')
+            }, function (data, status) {
+                if (!data || !data.success) {
+                    alert('Invalid user credentials found, redirecting to login');
+                    window.location.href = "login.html";
+                } else {
+                    currentLocation = data.currentLocation;
+                }
+            })
+
+            $('#submit-btn').click(function () {
+                const destination = $("#typelocationX").val();
+                // alert(`Your destination is ${destination}`);
+                $.post('https://sendpieapi.sayan.org.in/getmatchingorder', {
+                    username: localStorage.getItem('username'),
+                    password: localStorage.getItem('password'),
+                    destination: destination
+                }, function (data, status) {
+                    // alert(JSON.stringify(data));
+                    if (!data || data.length == 0) {
+                        alert('No suitable orders found');
+                    } else {
+                        // alert(`Found suitable orders ${JSON.stringify(data)}`);
+                        data.map((value) => {
+                            const orderData = JSON.parse(value.orderData);
+                            console.log(orderData);
+                            $('#orders-section').append(
+                                `<div class="col-10 col-md-8 col-lg-6 col-xl-5" id="order-1">
+                    <div class="card">
+                        <div class="card-body p-3">
+
+                            <p class="card-title fw-bolder fs-4">Order Details</p>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">Order ID: <span class="fw-bolder"> ${value.orderId}</span> </li>
+                            <li class="list-group-item">Shop name: <span class="fw-bolder"> ${orderData.shop}</span></li>
+                            <li class="list-group-item">Shop location(Your): <span class="fw-bolder"> ${orderData.shopLocation}</span></li>
+                            <li class="list-group-item">item name:<span class="fw-bolder"> ${orderData.item.name}</span></li>
+                            <li class="list-group-item">Price: <span class="fw-bolder"> ${orderData.item.price}</span></li>
+                            <li class="list-group-item">Customer name:<span class="fw-bolder"> ${value.byUsername}</span></li>
+                        </ul>
+                    </div>
+                </div>`
+                            )
+                        })
+                    }
+                })
+            })
+        });
+    </script>
+    <title>Set Destination | SendPie</title>
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand fw-bolder fs-2" href="#!">SendPie</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">All Products</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                    </ul>
+                </li> -->
+                </ul>
+                <!-- <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form> -->
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100" id="orders-section">
+
+
+                <!-- <div class="col-10 col-md-8 col-lg-6 col-xl-5" id="order-1">
+                    <div class="card">
+                        <div class="card-body p-3">
+
+                            <p class="card-title fw-bolder fs-4">Order Details</p>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">order ID: <span id="orderID"> XXXXXX</span> </li>
+                            <li class="list-group-item">Shop name: <span id="shopName"> abcd</span></li>
+                            <li class="list-group-item">Shop location: <span id="shopLocation"> heaven</span></li>
+                            <li class="list-group-item">item name:<span id="itemName"> water</span></li>
+                            <li class="list-group-item">Price: <span id="itemPrice"> 12345</span></li>
+                            <li class="list-group-item">Customer name:<span id="customerName"> Trevor</span></li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="vh-100" id="setDestination">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card" style="border-radius: 1.5rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5 mt-md-4 pb-5 main-card">
+
+
+                                <p class="mb-5 fs-3 fw-bold login-text">Set Destination</p>
+
+                                <form action="" method="get" id="des-form">
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="text" id="typelocationX" class="form-control form-control-xl"
+                                            placeholder="Where are you heading today?" name="location" autofocus>
+                                    </div>
+
+                                    <button class="btn btn-success btn-lg px-5" type="submit" id="submit-btn">
+                                        Go!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card">
+            
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
