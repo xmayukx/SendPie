@@ -1,0 +1,72 @@
+[
+    {
+        "shop": "KFC",
+        "location": "Barasat",
+        "phone": "0123456789",
+        "items": [
+            {
+                "name": "5pc Leg Piece Bucket Meal",
+                "description": "Save 22% on 5 chicken Leg Pieces, 2 dips, 1 Medium Fries & a Pepsi(650ml)",
+                "price": 619.05,
+                "veg": false,
+                "img":"https://lh3.googleusercontent.com/JPKMyf2d_PD5GQw35T2XcSa3K1go8Yji1Y38bap_nkXwi4FovtcHjB9W44fxZuDxYFWHxzxq4zNRHmF_ypBQ9gdD8Xb9QeEGDHEehbM"
+            },
+            {
+                "name": "Veg Biryani Box",
+                "description": "Biryani lovers unite : Get 1 Veg Biryani Bucket with gravy, 1 Veg Patty & a Pepsi",
+                "price": 279.05,
+                "veg": true,
+                "img":"https://lh3.googleusercontent.com/Y4gNq1YzLmuXawKfeLBBACo3ApbpAbtcYgeaBCmaCl-qbIXS1Nfyb27yvcpGHOBl0nSpz8mpU5WK2V64kLC3EWaGdsTPOShrWOVKcJ8"
+            },
+            {
+                "name": "Tandoori Zinger Burger",
+                "description": "Chicken zinger with a delicious tandoori sauce",
+                "price": 199.05,
+                "veg": false,
+                "img":""
+            },
+            {
+                "name": "Classic Zinger Meal",
+                "description": "Favorite combo of Classic Zinger Burger, Medium Fries & a chilled Pepsi Black [serves 1]",
+                "price": 344.76,
+                "veg": false,
+                "img":""
+            }
+        ]
+    },
+    {
+        "shop": "Pizza Hut",
+        "location": "Barasat",
+        "phone": "0123456789",
+        "items": [
+            {
+                "name": "Peppy Paneer",
+                "description": "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika",
+                "price": 289.05,
+                "veg": true,
+                "img":"https://i0.wp.com/www.dominosoffer.co.in/wp-content/uploads/2021/03/Dominos-peppy-paneer-pizza.jpg?fit=800%2C450&ssl=1"
+            },
+            {
+                "name": "Chicken Maximus",
+                "description": "Loaded to the Max with Chicken Tikka, Chicken Keema, Chicken Sausage and a double dose of grilled Chicken Rashers.",
+                "price": 699.05,
+                "veg": false,
+                "img":"https://lh3.googleusercontent.com/Dj3iCzQ-k-guUZoTN0K2NVgaJ_FFmLnu3hLpxJp9KsQcXjV8J_ngp_6XCwjQS6tYja8ZW9hnfyOn1npPLC9p8qWBSgpg49yvm2JFsrw"
+            },
+            {
+                "name": "Pizza",
+                "description": "Pizza with cheese, mushrooms, olives, onions, tomatoes, and basil",
+                "price": 299.05,
+                "veg": true,
+                "img":""
+            },
+            {
+                "name": "Pizza",
+                "description": "Pizza with cheese, mushrooms, olives, onions, tomatoes, and basil",
+                "price": 299.05,
+                "veg": true,
+                "img":""
+            }
+        ]
+    }
+]
