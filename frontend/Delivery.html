@@ -55,6 +55,7 @@
                         // alert(`Found suitable orders ${JSON.stringify(data)}`);
                         data.map((value) => {
                             const orderData = JSON.parse(value.orderData);
+                            const item = JSON.parse(orderData.item);
                             console.log(orderData);
                             $('#orders-section').append(
                                 `<div class="col-10 col-md-8 col-lg-6 col-xl-5" id="order-1">
@@ -69,8 +70,8 @@
                             <li class="list-group-item">Order ID: <span class="fw-bolder"> ${value.orderId}</span> </li>
                             <li class="list-group-item">Shop name: <span class="fw-bolder"> ${orderData.shop}</span></li>
                             <li class="list-group-item">Shop location(Your): <span class="fw-bolder"> ${orderData.shopLocation}</span></li>
-                            <li class="list-group-item">item name:<span class="fw-bolder"> ${orderData.item.name}</span></li>
-                            <li class="list-group-item">Price: <span class="fw-bolder"> ${orderData.item.price}</span></li>
+                            <li class="list-group-item">item name:<span class="fw-bolder"> ${item.name}</span></li>
+                            <li class="list-group-item">Price: <span class="fw-bolder"> ${item.price}</span></li>
                             <li class="list-group-item">Customer name:<span class="fw-bolder"> ${value.byUsername}</span></li>
                         </ul>
                     </div>
