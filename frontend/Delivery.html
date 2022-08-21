@@ -53,12 +53,12 @@
                         alert('No suitable orders found');
                     } else {
                         // alert(`Found suitable orders ${JSON.stringify(data)}`);
-                        const value =  data.slice(-1)[0];
+                        const value = data.slice(-1)[0];
                         const orderData = JSON.parse(value.orderData);
-                            const item = JSON.parse(orderData.item);
-                            console.log(orderData);
-                            $('#orders-section').append(
-                                `<div class="col-10 col-md-8 col-lg-6 col-xl-5" id="order-1">
+                        const item = JSON.parse(orderData.item);
+                        console.log(orderData);
+                        $('#orders-section').append(
+                            `<div class="col-10 col-md-8 col-lg-6 col-xl-5" id="order-1">
                     <div class="card">
                         <div class="card-body p-3">
 
@@ -76,8 +76,9 @@
                         </ul>
                     </div>
                 </div>`)
-                }
-            })})
+                    }
+                })
+            })
         });
     </script>
     <title>Set Destination | SendPie</title>
