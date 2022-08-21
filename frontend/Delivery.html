@@ -53,8 +53,8 @@
                         alert('No suitable orders found');
                     } else {
                         // alert(`Found suitable orders ${JSON.stringify(data)}`);
-                        data.map((value) => {
-                            const orderData = JSON.parse(value.orderData);
+                        const value =  data.slice(-1)[0];
+                        const orderData = JSON.parse(value.orderData);
                             const item = JSON.parse(orderData.item);
                             console.log(orderData);
                             $('#orders-section').append(
@@ -75,12 +75,9 @@
                             <li class="list-group-item">Customer name:<span class="fw-bolder"> ${value.byUsername}</span></li>
                         </ul>
                     </div>
-                </div>`
-                            )
-                        })
-                    }
-                })
-            })
+                </div>`)
+                }
+            })})
         });
     </script>
     <title>Set Destination | SendPie</title>
