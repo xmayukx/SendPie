@@ -18,3 +18,17 @@ adding a side income for regular people.**
 - `backend` - keeps the nodeJS backend written in TypeScript using express
 
 
+## Steps to be followed
+_**Since we haven't included the sign up page yet, it is requested to login with the following credentials as per requirement.**_
+
+### Delivery Person
+ 
+ 
+  **username** :  `mayukh`   \
+  **password** : `hello`
+  
+### Customer
+
+
+  **username** : `sayan`     \
+  **password** : `uwu`
