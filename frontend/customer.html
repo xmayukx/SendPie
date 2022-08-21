@@ -81,7 +81,7 @@
                 // $("#piz-2-desc").text(shops[1].items[1].description);
                 // $("#piz-2-price").text(shops[1].items[1].price);
 
-                
+
 
                 // KFC 
 
@@ -103,12 +103,12 @@
                     // alert(JSON.stringify(shops[0].items[0]));
                     $.post('https://sendpieapi.sayan.org.in/makeorder', orData,
                         function (data, status) {
-                            
+
                             if (data !== null) {
-                                
-                                alert(`Order has been placed, data ${JSON.stringify(data)}`);
+
+                                window.location.href = "success.html";
                             } else {
-                                alert('Failed to make an order');
+                                window.location.href = "failure.html";
                             }
                         });
 
@@ -134,9 +134,10 @@
                     $.post('https://sendpieapi.sayan.org.in/makeorder', orData,
                         function (data, status) {
                             if (data !== null) {
-                                alert(`Order has been placed, data ${JSON.stringify(data)}`);
+
+                                window.location.href = "success.html";
                             } else {
-                                alert('Failed to make an order');
+                                window.location.href = "failure.html";
                             }
                         });
 
@@ -164,9 +165,10 @@
                     $.post('https://sendpieapi.sayan.org.in/makeorder', orData,
                         function (data, status) {
                             if (data !== null) {
-                                alert(`Order has been placed, data ${JSON.stringify(data)}`);
+
+                                window.location.href = "success.html";
                             } else {
-                                alert('Failed to make an order');
+                                window.location.href = "failure.html";
                             }
                         });
 
@@ -192,9 +194,10 @@
                     $.post('https://sendpieapi.sayan.org.in/makeorder', orData,
                         function (data, status) {
                             if (data !== null) {
-                                alert(`Order has been placed, data ${JSON.stringify(data)}`);
+
+                                window.location.href = "success.html";
                             } else {
-                                alert('Failed to make an order');
+                                window.location.href = "failure.html";
                             }
                         });
 
