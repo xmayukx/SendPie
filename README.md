@@ -27,14 +27,14 @@ _**Since we haven't included the sign up page yet, it is requested to login with
 
 ### Delivery Person
  
- 
-  **username** :  `mayukh`   \
+  **What do you wanna do?** :  `Take an order`   \
+  **username** :  `mayukh`   
   **password** : `hello`
   
 ### Customer
 
-
-  **username** : `sayan`     \
+  **What do you wanna do?** :  `Place an order`  \
+  **username** : `sayan`     
   **password** : `uwu`
   
   
