@@ -28,7 +28,7 @@ _**Since we haven't included the sign up page yet, it is requested to login with
 ### Delivery Person
  
   **What do you wanna do?** :  `Take an order`   \
-  **Destination** : `Nagerbazar`
+  **Destination** : `Nagerbazar` \
   **username** :  `mayukh`   
   **password** : `hello`
   
